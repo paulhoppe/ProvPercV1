@@ -3,7 +3,7 @@ function Box(x,y,w,h,r){
 var options = {
 
 //friction: 0,
-//restitution: .6,
+restitution: .6,
 angle: r
 
 }
@@ -13,6 +13,8 @@ this.w = w;
 this.h = h;
 this.r = r;
 World.add(engine.world, this.body);
+
+
 
 this.show = function(){
 
