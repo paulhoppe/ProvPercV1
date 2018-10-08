@@ -3,4 +3,5 @@ Command Records Album Artwork Project
 
 Over a long weekend in October
 
-Changing this to test user name on Alyssa's laptop
+Git success on both the desktop and laptop!
+Now if I can only get the sketch to work...
