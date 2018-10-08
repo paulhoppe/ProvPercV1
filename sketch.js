@@ -1,3 +1,7 @@
+Matter.use(
+  'matter-attractors'
+);
+
 var Engine = Matter.Engine,
 //  Render = Matter.Render,
     World = Matter.World,
@@ -6,11 +10,9 @@ var Engine = Matter.Engine,
     MouseConstraint = Matter.MouseConstraint,
     Mouse = Matter.Mouse;
 
-let img
-let img2
-let shapes = [];
-let windowMouseX;
-let windowMouseY;
+let img;
+let img2;
+
 let largeRect = 119;
 let smallRect = 40;
 let speed = 0.001;
@@ -24,13 +26,16 @@ var engine;
 var world;
 var boxes = [];
 var boundaries = [];
+var attractors = [];
 
 function setup() {
-  var canvas = createCanvas(1000, 1000)
+  var canvas = createCanvas(1000, 1000);
+
 
 
   engine = Engine.create();
   world = Engine.world;
+  engine.world.gravity.y = 0;
   Engine.run(engine);
 
   img = loadImage("assets/Provocative_Percussion_Blank.png");
@@ -62,27 +67,42 @@ function setup() {
    boundaries.push(new Boundary(canvas.width, canvas.height/2, boundWidth, canvas.height, 0));
    boundaries.push(new Boundary(canvas.height/2, 0, canvas.width, boundWidth, 0));
 
+//console.log(boxes[0]);
 
-
-// for (var i; i<boxes.length-1; i++)
-// {
-//   var options = {
-// bodyA: boxes[i].body,
-// bodyB: boxes[i+1].body,
-// length: 10,
-// stiffness: 1
-//   }
-//   var constraint = Constraint.create(options)
-//   World.add(engine.world, constraint);
+// var attractiveBody = Bodies.circle(
+//     100,
+//     100,
+//     50,
+//     {
+//     isStatic: true,
 //
-// }
+//     // example of an attractor function that
+//     // returns a force vector that applies to bodyB
+//     plugin: {
+//       attractors: [
+//         function(bodyA, bodyB) {
+//           return {
+//             x: (bodyA.position.x - bodyB.position.x) * 1e-6,
+//             y: (bodyA.position.y - bodyB.position.y) * 1e-6,
+//           };
+//         }
+//       ]
+//     }
+//   });
+//
+//   World.add(engine.world, attractiveBody);
+
+attractors.push(new Attractor(canvas.width/2, canvas.height/2, 10,10,0));
+
+
+
 
 var canvasMouse = Mouse.create(canvas.elt);
 canvasMouse.pixelRatio = pixelDensity();
 var options = {
   mouse:canvasMouse,
-  stiffness: .01
-}
+  stiffness: .2,
+};
 
 
 mConstraint = MouseConstraint.create(engine, options);
@@ -94,17 +114,11 @@ function draw() {
 
 image(img, 0, 0)
 
-
 for(var i=0; i<boxes.length; i++){
   boxes[i].show();
 }
-// }
-// for(var i=0; i<boxes.length-1; i++){
-// line(boxes[i].body.position.x,boxes[i].body.position.y,boxes[i+1].body.position.x,boxes[i+1].body.position.y,)
-// }
 
 if (mConstraint.body){
-
   var pos = mConstraint.body.position;
   var m = mConstraint.mouse.position;
   var offset = mConstraint.constraint.pointB;
@@ -118,21 +132,16 @@ for(var i=0; i<boundaries.length; i++){
 
 
 
+for(var i=0; i<attractors.length; i++){
+attractors[0].show();
+}
+
+
 }
 
 
 
-
-
-
-//give me mouse coordinates
-// function windowMouse(){
-// windowMouseX = mouseX-windowWidth/2;
-// windowMouseY = mouseY-windowHeight/2;
-// }
-
 function mouseDragged(){
-
 //boxes.push(new Box(mouseX,mouseY,smallRect,smallRect,0))
   //  boxes.push(new Box(mouseX,mouseY,largeRect,largeRect,0))
 }
