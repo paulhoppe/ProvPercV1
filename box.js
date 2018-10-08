@@ -2,9 +2,9 @@ function Box(x,y,w,h,r){
 
 var options = {
 
-friction: 0,
-restitution: .6,
-angle: degrees(r)
+//friction: 0,
+//restitution: .6,
+angle: r
 
 }
 

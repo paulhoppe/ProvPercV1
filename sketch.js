@@ -31,6 +31,7 @@ function setup() {
 
   engine = Engine.create();
   world = Engine.world;
+  engine.world.gravity.y = 0;
   Engine.run(engine);
 
   img = loadImage("assets/Provocative_Percussion_Blank.png");
@@ -81,7 +82,7 @@ var canvasMouse = Mouse.create(canvas.elt);
 canvasMouse.pixelRatio = pixelDensity();
 var options = {
   mouse:canvasMouse,
-  stiffness: .01
+  stiffness: .2,
 }
 
 

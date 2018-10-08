@@ -2,7 +2,7 @@ function Boundary(x,y,w,h,r){
 
 var options = {
 
-friction: 0,
+//friction: 0,
 isStatic: true,
 angle: r
 
@@ -24,7 +24,7 @@ this.show = function(){
   push();
   translate(pos.x, pos.y);
   rotate(angle);
-  fill(255,0,0);
+  fill(40);
   noStroke();
   rectMode(CENTER)
   rect(0,0,this.w, this.h);
