@@ -26,7 +26,9 @@ var boxes = [];
 var boundaries = [];
 
 function setup() {
-  var canvas = createCanvas(windowWidth, windowHeight)
+  var canvas = createCanvas(1000, 1000)
+
+
   engine = Engine.create();
   world = Engine.world;
   Engine.run(engine);
@@ -55,10 +57,10 @@ function setup() {
    boxes.push(new Box(587,747,smallRect,smallRect,-.59));
    boxes.push(new Box(256,838,smallRect,smallRect,.26));
 
-   boundaries.push(new Boundary(windowWidth/2, 1000, windowWidth, boundWidth, 0));
-   boundaries.push(new Boundary(0, windowHeight/2, boundWidth, windowHeight, 0));
-   boundaries.push(new Boundary(1000, windowHeight/2, boundWidth, windowHeight, 0));
-  boundaries.push(new Boundary(windowWidth/2, 0, windowWidth, boundWidth, 0));
+   boundaries.push(new Boundary(canvas.width/2, canvas.height, canvas.width, boundWidth, 0));
+   boundaries.push(new Boundary(0, canvas.height/2, boundWidth, canvas.height, 0));
+   boundaries.push(new Boundary(canvas.width, canvas.height/2, boundWidth, canvas.height, 0));
+   boundaries.push(new Boundary(canvas.height/2, 0, canvas.width, boundWidth, 0));
 
 
 
@@ -111,8 +113,10 @@ if (mConstraint.body){
 }
 
 for(var i=0; i<boundaries.length; i++){
-  //boundaries[i].show();
+//boundaries[i].show();
 }
+
+
 
 }
 
@@ -134,5 +138,7 @@ function mouseDragged(){
 }
 
 function windowResized(){
-  resizeCanvas(windowWidth, windowHeight)
+ resizeCanvas(windowWidth, windowHeight);
+// console.log(windowWidth, windowHeight);
+
 }
