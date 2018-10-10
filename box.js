@@ -1,4 +1,4 @@
-function Box(x,y,w,h,r){
+function Box(x,y,w,h,r,l){
 
 
 //Box Body
@@ -6,11 +6,14 @@ var bodyOptions = {
 
 friction: .5,
 restitution: .6,
-angle: r
+angle: r,
+
 
 }
 
 this.body = Bodies.rectangle(x,y,w,h,bodyOptions);
+this.body.label = l;
+
 World.add(engine.world, this.body);
 
 
