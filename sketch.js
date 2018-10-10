@@ -35,7 +35,7 @@ function setup() {
 
   engine = Engine.create();
   world = Engine.world;
-  engine.world.gravity.y = 0;
+  engine.world.gravity.y = 1;
   Engine.run(engine);
 
   img = loadImage("assets/Provocative_Percussion_Blank.png");
@@ -67,6 +67,20 @@ function setup() {
    boundaries.push(new Boundary(canvas.width, canvas.height/2, boundWidth, canvas.height, 0));
    boundaries.push(new Boundary(canvas.height/2, 0, canvas.width, boundWidth, 0));
 
+
+
+   // var options = {
+   //
+   // bodyA: boxes[0].body,
+   // bodyB: boxes[1].body,
+   // length: 50,
+   // stiffness: 0.2
+   //
+   // }
+   //
+   // var spring = Constraint.create(options);
+   // World.add(engine.world, spring);
+
 //console.log(boxes[0]);
 
 // var attractiveBody = Bodies.circle(
@@ -92,7 +106,7 @@ function setup() {
 //
 //   World.add(engine.world, attractiveBody);
 
-attractors.push(new Attractor(canvas.width/2, canvas.height/2, 10,10,0));
+//attractors.push(new Attractor(canvas.width/2, canvas.height/2, 10,10,0));
 
 
 
@@ -123,18 +137,18 @@ if (mConstraint.body){
   var m = mConstraint.mouse.position;
   var offset = mConstraint.constraint.pointB;
   stroke(0,255,0);
-  line(pos.x+offset.x, pos.y+offset.y, m.x, m.y);
+  //line(pos.x+offset.x, pos.y+offset.y, m.x, m.y);
 }
 
 for(var i=0; i<boundaries.length; i++){
 //boundaries[i].show();
 }
 
-
-
 for(var i=0; i<attractors.length; i++){
-attractors[0].show();
+//attractors[0].show();
 }
+
+
 
 
 }
