@@ -1,11 +1,12 @@
-function Box(x,y,w,h,r,l){
+function Box(x,y,w,h,r,l,id){
 
-
+this.id = id;
+this.fill = 40;
 //Box Body
 var bodyOptions = {
 
 friction: .5,
-restitution: .6,
+restitution: 0,
 angle: r,
 
 
@@ -13,6 +14,7 @@ angle: r,
 
 this.body = Bodies.rectangle(x,y,w,h,bodyOptions);
 this.body.label = l;
+this.body.id = id;
 
 World.add(engine.world, this.body);
 
@@ -52,16 +54,27 @@ this.r = r;
 //Show Function
 this.show = function(){
 
+  noiseSeed(this.body.id);
+  //this.body.angle = map(noise(frameCount*frameDiv), 0,1,-15,15);
+
   var pos = this.body.position;
   var angle = this.body.angle;
 
   push();
   translate(pos.x, pos.y);
   rotate(angle);
-  fill(40);
+  if(this.fill > 40){
+      this.fill -= 0.1;
+      console.log(this.fill)
+  }
+  fill(this.fill);
   noStroke();
   rectMode(CENTER)
   rect(0,0,this.w, this.h);
+if(debug){
+  fill(255)
+text(this.body.id, 0,0)
+}
   pop();
 
   stroke(255,0,0);
