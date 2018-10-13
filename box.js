@@ -38,7 +38,7 @@ var springOptions = {
   bodyA: this.anchor,
   bodyB: this.body,
   length: 0,
-  stiffness: 0.1
+  stiffness: 0.02
 
 }
 
@@ -64,7 +64,7 @@ this.show = function(){
   translate(pos.x, pos.y);
   rotate(angle);
   if(this.fill > 40){
-      this.fill -= 0.1;
+      this.fill -= 25;
       console.log(this.fill)
   }
   fill(this.fill);

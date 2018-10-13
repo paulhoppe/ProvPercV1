@@ -58,7 +58,7 @@ function setup() {
 
   engine = Engine.create();
   world = Engine.world;
-  engine.world.gravity.y = 1;
+  engine.world.gravity.y = .01;
   Engine.run(engine);
 
 
@@ -121,6 +121,7 @@ function setup() {
 */
     //  boxes[pairs[0].bodyA.id].fill = 255;
       boxes[pairs[0].bodyB.id].fill = 255;
+      boxes[pairs[0].bodyA.id].fill = 255;
       drums[Math.floor(Math.random()*drums.length)].play();
 
   });
