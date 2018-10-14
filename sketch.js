@@ -63,8 +63,7 @@ function setup() {
 
 
 
-  img = loadImage("assets/Provocative_Percussion_Blank.png");
-  img2 = loadImage("assets/Provocative_Percussion.png");
+  img = loadImage("assets/Provocative_Percussion_Blank.jpg");
 
    boxes.push(new Box(280,280,largeRect,largeRect,.83, "large"));
    boxes.push(new Box(140,367,largeRect,largeRect,.08, "large"));
